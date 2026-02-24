@@ -1,0 +1,46 @@
+<%- include('layout', { title: title, user: user, body: `
+  <section class="dashboard">
+    <h2>Admin dashboard</h2>
+
+    <div class="grid">
+      <div class="card">
+        <h3>Users</h3>
+        <p>Total: ${stats.userCount}</p>
+      </div>
+      <div class="card">
+        <h3>Accounts</h3>
+        <p>Total: ${stats.accountCount}</p>
+      </div>
+      <div class="card">
+        <h3>Transactions</h3>
+        <p>Total: ${stats.txCount}</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Recent transactions</h3>
+      <table class="tx-table">
+        <thead>
+          <tr>
+            <th>Account</th>
+            <th>Type</th>
+            <th>Amount</th>
+            <th>Description</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${recentTx.map(t => `
+            <tr>
+              <td>${t.account_number}</td>
+              <td>${t.type}</td>
+              <td>${t.amount}</td>
+              <td>${t.description || ''}</td>
+              <td>${new Date(t.created_at).toLocaleString()}</td>
+            </tr>
+          `).join('')}
+        </tbody>
+      </table>
+    </div>
+  </section>
+` }) %>
