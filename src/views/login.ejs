@@ -1,0 +1,16 @@
+<%- include('layout', { title: title, user: null, body: `
+  <section class="auth-card">
+    <h2>Login</h2>
+    ${error ? `<div class="error">${error}</div>` : ''}
+    <form method="POST" action="/login">
+      <label>Email</label>
+      <input type="email" name="email" required />
+
+      <label>Password</label>
+      <input type="password" name="password" required />
+
+      <button type="submit">Sign in</button>
+    </form>
+    <p>New to gr8pay? <a href="/register">Create an account</a></p>
+  </section>
+` }) %>
