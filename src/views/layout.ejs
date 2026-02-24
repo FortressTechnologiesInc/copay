@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <header class="top-bar">
+    <div class="brand">gr8pay LLC</div>
+    <% if (typeof user !== 'undefined' && user) { %>
+      <nav class="nav-tabs">
+        <a href="/dashboard">Dashboard</a>
+        <a href="/transfers">Transfers</a>
+        <a href="/transactions">Transactions</a>
+        <% if (user.is_admin) { %>
+          <a href="/admin">Admin</a>
+        <% } %>
+        <a href="/logout" class="logout">Logout</a>
+      </nav>
+    <% } else { %>
+      <nav class="nav-tabs">
+        <a href="/login">Login</a>
+        <a href="/register">Register</a>
+      </nav>
+    <% } %>
+  </header>
+
+  <main class="content">
+    <%- body %>
+  </main>
+</body>
+</html>
